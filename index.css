@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+/*
+ * ── Design Tokens ──────────────────────────────────────────
+ * Editorial palette inspired by the reference design.
+ */
+@theme {
+  --color-paper: #F6F1E9;
+  --color-paper-light: #FFFCF6;
+  --color-ink: #211327;
+  --color-plum: #3D1F4E;
+  --color-plum-deep: #2A1536;
+  --color-gold: #DFA23D;
+  --color-rose: #C23B6B;
+  --color-line: rgba(33, 19, 39, 0.14);
+
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Public Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
+}
+
+/*
+ * ── Base Styles ────────────────────────────────────────────
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-plum-deep);
+  line-height: 1.15;
+}
+
+/*
+ * ── Utility Classes ────────────────────────────────────────
+ */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-plum);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 2px;
+  background: var(--color-gold);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/*
+ * ── Scroll Reveal Animation ───────────────────────────────
+ */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*
+ * ── Article Prose ──────────────────────────────────────────
+ */
+.article-prose {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-ink);
+}
+
+.article-prose p {
+  margin-bottom: 1.5em;
+}
+
+.article-prose h2 {
+  font-size: 1.5rem;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.article-prose h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.article-prose blockquote {
+  border-left: 3px solid var(--color-gold);
+  padding-left: 1.25rem;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: var(--color-plum);
+}
+
+.article-prose ul,
+.article-prose ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+
+.article-prose li {
+  margin-bottom: 0.5em;
+}
+
+/*
+ * ── Focus Styles ───────────────────────────────────────────
+ */
+*:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+/*
+ * ── Scrollbar ──────────────────────────────────────────────
+ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-plum);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-plum-deep);
+}
